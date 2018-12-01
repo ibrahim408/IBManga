@@ -2,13 +2,6 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Image} from 'react-native';
 import GridView from 'react-native-super-grid';
 
-// source= {require("../../img/bike2.jpeg")}
-//source= {{ uri: "//" }}
-
-              // <Image
-              //   style={{flex: 1, width: null, width: null, borderRadius: 5}}
-              //   source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}
-              // />
 export default class Home extends Component<Props> {
   render() {
     
