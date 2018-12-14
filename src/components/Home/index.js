@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Image} from 'react-native';
+import {Platform, StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import GridView from 'react-native-super-grid';
 
 export default class Home extends Component<Props> {
@@ -24,12 +24,22 @@ export default class Home extends Component<Props> {
           items={items}
           style={styles.gridView}
           renderItem={item => (
-            <View style={[styles.itemContainer, { backgroundColor: item.code }]}>
-              <Image
-                style={{flex: 1, width: null, width: null, borderRadius: 5}}
-                source={item.image}
-              />
-            </View>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('MangaDetail',{item: item})}>
+              <View style={[styles.itemContainer, { backgroundColor: item.code }]}>
+                <View style={{flex: 6}}>
+                  <Image
+                    style={{flex: 20, width: null, width: null, borderRadius: 5}}
+                    source={item.image}
+                  />
+                </View>
+                <View style={{flex: 1}}>
+                  <View style={styles.itemNameContainer}>
+                    <Text style={styles.itemName}> {item.name}
+                    </Text>
+                  </View>
+                </View>              
+              </View>
+            </TouchableOpacity>
           )}
         />
     );
@@ -55,5 +65,8 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 12,
     color: '#fff',
+  },
+  itemNameContainer: {
+    flex: 1
   },
 });
