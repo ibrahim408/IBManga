@@ -9,34 +9,86 @@ export default class MangaInfoDetail extends React.Component{
 					<View style={styles.containerImage}>
 						<Image
 							style={{flex: 1 , width: undefined, height: undefined}}
-							borderRadius={15}
-							source={require('../../img/13.jpg')}
+							borderRadius={5}
+							source={require('../../img/4.jpg')}
 						/>
 					</View>
 					<View style={styles.containerDetail}>
+
             <View style={styles.containerDetailOne}>
+              <View style={{flex: 1, flexDirection: 'row'}}>
+                <View style={{flex:1}}>
+                  <View style={{flex: 1, flexDirection: 'column'}}>
+                    <Text style={{fontSize: 12, color: 'grey'}}> TYPE
+                    </Text>
+                    <Text style={{fontSize: 12, color: 'white'}}> Mange
+                    </Text>                    
+                  </View>
+                </View>
+                <View style={{flex:1}}>
+                  <View style={{flex: 1, flexDirection: 'column'}}>
+                    <Text style={{fontSize: 12, color: 'grey'}}> VOLUMES
+                    </Text>
+                    <Text style={{fontSize: 12, color: 'white'}}> -
+                    </Text>                    
+                  </View>                
+                </View>
+                <View style={{flex:1}}>
+                  <View style={{flex: 1, flexDirection: 'column'}}>
+                    <Text style={{fontSize: 12, color: 'grey'}}> CHAPTERS
+                    </Text>
+                    <Text style={{fontSize: 12, color: 'white'}}> -
+                    </Text>                    
+                  </View>                
+                </View>                                
+              </View>
+              <View style={{flex: 1, flexDirection: 'row'}}>
+                <View style={{flex:1}}>
+                  <View style={{flex: 1, flexDirection: 'column'}}>
+                    <Text style={{fontSize: 12, color: 'grey'}}> AUTHOR
+                    </Text> 
+                    <Text style={{fontSize: 12, color: 'white'}}> -
+                    </Text>
+                  </View>
+                </View>
+                <View style={{flex:1}}>
+                  <View style={{flex: 1, flexDirection: 'column'}}>
+                    <Text style={{fontSize: 12, color: 'grey'}}> PUBLISHED
+                    </Text>
+                    <Text style={{fontSize: 12, color: 'white'}}> Aug 1989
+                    </Text>
+                  </View>
+                </View>              
+              </View>
             </View>
+          
             <View style={styles.containerDetailTwo}>
+              <Text style={{fontSize: 12, color: 'grey'}}> GENRE
+              </Text>
+              <Text style={{fontSize: 12, color: 'white'}}> Drama, Action, Adventure
+              </Text>
             </View>
+          
             <View style={styles.containerDetailThree}>
-              <View style={{flex: 1, flexDirection: 'column', backgroundColor: 'white'}}>
-                <Text> Score
+              <View style={{flex: 1, flexDirection: 'column'}}>
+                <Text  style={{fontSize: 12, color: 'grey'}}> SCORE
                 </Text>
-                <Text> 9.00
+                <Text  style={{fontSize: 20, color: 'white'}}> 9.00
                 </Text>                
               </View>
-              <View style={{flex: 1, flexDirection: 'column', backgroundColor: 'blue'}}>
-                <Text> Rank
+              <View style={{flex: 1, flexDirection: 'column'}}>
+                <Text  style={{fontSize: 12, color: 'grey'}}> RANK
                 </Text>
-                <Text> #1
+                <Text  style={{fontSize: 20, color: 'white'}}> #1
                 </Text>               
               </View>                
-              <View style={{flex: 1, flexDirection: 'column', backgroundColor: 'white'}}>
-                <Text> Popularity
+              <View style={{flex: 1, flexDirection: 'column'}}>
+                <Text  style={{fontSize: 12, color: 'grey'}}> POPU
                 </Text>
-                <Text> #3
+                <Text  style={{fontSize: 20, color: 'white'}}> #3
                 </Text>               
               </View>
+
             </View>                        
 					</View>
 				</View>
@@ -48,31 +100,27 @@ const styles = StyleSheet.create({
   container:{
   	flex: 3,
   	flexDirection: 'row',
-  	justifyContent: 'flex-start',
-  	backgroundColor: 'pink'
+  	justifyContent: 'flex-start'
   },
   containerImage:{
   	flex: 1,
-  	backgroundColor: 'brown',
-  	margin: 10
+  	margin: 12
   },
   containerDetail:{
   	flex: 2,
-  	backgroundColor: 'green',
-  	margin: 10
+  	margin: 7
   },
   containerDetailOne:{
     flex: 5,
-    backgroundColor: 'orange'
+    flexDirection: 'column',
   },
   containerDetailTwo:{
     flex: 2,
-    backgroundColor: 'blue'
+    flexDirection: 'column',
   },
   containerDetailThree:{
     flex: 3,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: 'black'
   }
 });
