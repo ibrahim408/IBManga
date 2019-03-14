@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import { Dimensions, Platform, StyleSheet, FlatList, Text, View, Image, TouchableOpacity, SectionList,ScrollView} from 'react-native';
 import CategoryManager from './CategoryManager'
+import firebase from '../../Firebase';
 
-// retrieve data from firebase
-// create search bar (should filter each)
-// 
 export default class Discover extends Component<Props> {
 
   render() {
