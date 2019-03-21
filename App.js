@@ -51,7 +51,7 @@ const AppNavigator = createStackNavigator(
     Settings: Settings
   },
   {
-    initialRouteName: "Discover"
+    initialRouteName: "Manga"
   }
 );
 
