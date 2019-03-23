@@ -12,19 +12,34 @@ import {
 class Section extends Component {
     render() {
         return (
-            <View style={{flex: 1, backgroundColor: 'green'}}>
+            <View style={{height: 100, backgroundColor: 'green'}}>
+                                    <View style={{height: 33, backgroundColor: 'pink'}}>
+                        </View>
+                <View style={{flex: 1, flexDirection: 'row', backgroundColor: 'green'}}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('MangaDetail',{item: 3}, {title: 'WHATEVER'})}>
+                        <View style={{flex: 1, backgroundColor: 'yellow'}}>
+                        </View>
+                        <View style={styles.infoCard}>
+                        </View>
+                        <View style={{height: 33, backgroundColor: 'pink'}}>
+                        </View>
+                    </TouchableOpacity>
+                </View>            
             </View>
         );
     }
 }
-export default Section;
 
 const styles = StyleSheet.create({
-    card: {
-        height: 185, 
-        width: '100%', 
-        marginLeft: 10,
-        marginTop: 15,
-        backgroundColor: 'orange'
+    imageCard: {
+        flex: 1,
+        backgroundColor: 'yellow'
+    },
+    infoCard: {
+        flex: 4,
+        backgroundColor: 'pink'
     }
 });
+
+export default Section;
+

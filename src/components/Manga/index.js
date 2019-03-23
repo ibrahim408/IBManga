@@ -24,8 +24,7 @@ export default class Manga extends Component<Props> {
           </View>  
 
           <SectionHeader title={"Reading"} />
-          <View style={styles.example}>
-          </View>
+          <SectionManager navigation={this.props.navigation}  />
 
           <SectionHeader title={"Reading"} />
                 <View style={styles.example}>
