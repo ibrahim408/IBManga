@@ -6,7 +6,7 @@ export default class SectionManager extends Component<Props> {
 
   render() {
     return (
-        <View style={{height: 200, backgroundColor: 'red' }}>
+        <View style={{height: 200, backgroundColor: 'transparent' }}>
           <FlatList
             style={{
             }}
