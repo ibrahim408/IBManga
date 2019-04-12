@@ -23,14 +23,12 @@ export default class Manga extends Component<Props> {
             />          
           </View>  
 
-          <SectionHeader title={"Reading"} />
+          <SectionHeader title={"Reading"} count={"3"} />
           <SectionManager navigation={this.props.navigation}  />
-
-          <SectionHeader title={"Reading"} />  
-          <SectionHeader title={"Reading"} />
-          <SectionManager navigation={this.props.navigation}  />
-                    
-          <SectionHeader title={"Reading"} />
+          <SectionHeader title={"Completed"} count={"3"} />  
+          <SectionHeader title={"On Hold"} count={"3"} />
+          <SectionHeader title={"Dropped"} count={"3"} />
+          <SectionHeader title={"Plan To Read"} count={"3"} />          
         </View>
       </ScrollView>
     );

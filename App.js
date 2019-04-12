@@ -44,14 +44,45 @@ const AppNavigator = createStackNavigator(
 
       }),      
     },
-    List: List,
-    FirebaseTest: FirebaseTest,
-    Anime: Anime,
-    Manga: Manga,
-    Settings: Settings
+    Anime:{
+      screen: Anime,
+      navigationOptions: () => ({
+        title: `Anime`,
+        headerStyle: {
+          backgroundColor: '#132942'
+        },
+        headerTintColor: 'white',
+        headerLayoutPreset: 'left',
+        headerBackTitle: 'Discover'
+      })
+    },
+    Manga:{
+      screen: Manga,
+      navigationOptions: () => ({
+        title: `Manga`,
+        headerStyle: {
+          backgroundColor: '#132942'
+        },
+        headerTintColor: 'white',
+        headerLayoutPreset: 'left',
+        headerBackTitle: 'Discover'
+      })
+    },
+    Settings:{
+      screen: Settings,
+      navigationOptions: () => ({
+        title: `Settings`,
+        headerStyle: {
+          backgroundColor: '#132942'
+        },
+        headerTintColor: 'white',
+        headerLayoutPreset: 'left',
+        headerBackTitle: 'Settings'
+      })
+    }
   },
   {
-    initialRouteName: "Manga"
+    initialRouteName: "Settings"
   }
 );
 
