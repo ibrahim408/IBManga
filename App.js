@@ -20,6 +20,7 @@ class App extends React.Component {
 
 const AppNavigator = createStackNavigator(
   {
+    FirebaseTest: FirebaseTest,
     Discover: {
       screen: Discover,
       navigationOptions: () => ({
@@ -82,7 +83,7 @@ const AppNavigator = createStackNavigator(
     }
   },
   {
-    initialRouteName: "Settings"
+    initialRouteName: "Discover"
   }
 );
 

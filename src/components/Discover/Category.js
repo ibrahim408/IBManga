@@ -23,7 +23,7 @@ class Category extends Component {
                         <View style={{flex: 1}}>
                             <View style={{paddingLeft: 5, paddingTop: 2}}>
                                 <Text style={{fontSize: 15, fontWeight: 'bold', color: 'white'}}>
-                                    Naruto
+                                    {this.props.title}
                                 </Text>
                             </View>
                         </View>
