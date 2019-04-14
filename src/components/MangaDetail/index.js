@@ -15,11 +15,11 @@ export default class MangaDetail extends React.Component{
 			<View style={{flex: 1}}>
 				<ImageBackground
 					style={{flex: 1}}
-					blurRadius={30}
-					source={require('../../img/13.jpg')}
+					blurRadius={5}
+					source={{uri: item.image}}
 				>			
 					<ScrollView>
-						<MangaInfo />																
+						<MangaInfo item={item} />																
 					</ScrollView>								
 				</ImageBackground>
 			</View>

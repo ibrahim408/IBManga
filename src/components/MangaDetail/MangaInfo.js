@@ -12,7 +12,7 @@ export default class MangaInfo extends React.Component{
 		return(
 			<View style={{flex: 1}}>
 				<View style={styles.container}>
-					<MangaInfoDetail />		
+					<MangaInfoDetail item={this.props.item} />		
 
 					<View style={styles.subContainer2}>
 						<View style={{flex: 1, justifyContent: 'center'}}>
@@ -62,7 +62,7 @@ export default class MangaInfo extends React.Component{
 					<View style={{flex: 1, margin: 5}}>
 						<Text style={{color: "#414141"}}> ENGLISH
 						</Text>
-						<Text style={{color: 'white'}}> Naruto
+						<Text style={{color: 'white'}}> {this.props.item.title}
 						</Text>						
 					</View>
 					<View style={{flex: 1, margin: 5}}>

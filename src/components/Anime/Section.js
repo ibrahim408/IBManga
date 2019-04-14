@@ -12,43 +12,45 @@ import {
 class Section extends Component {
     render() {
         return (
-            <View style={styles.container}>
-                <View style={styles.imageContainer}>
-                    <View style={styles.imageStyling}>
-                        <Image
-                            style={{flex:1, height: null, width: null}}
-                            resizeMode={'stretch'}
-                            source={require('../../img/a_1.jpg')}
-                            />
-                    </View>
-                </View>
-                <View style={styles.detailContainer}>
-                    <View style={styles.topDetailContainer}>
-                        <View style={styles.titleContainer}>
-                            <Text style={{fontSize: 24, color: 'white'}}> Doror
-                            </Text>
-                        </View>
-                        <View style={styles.epsiodeContainer}>
-                            <Text style={{fontSize: 12, color: 'white'}}> 24 episodes
-                            </Text>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('MangaDetail',{item: this.props.item}, {title: 'WHATEVER'})}>
+                <View style={styles.container}>
+                    <View style={styles.imageContainer}>
+                        <View style={styles.imageStyling}>
+                            <Image
+                                style={{flex:1, height: null, width: null}}
+                                resizeMode={'stretch'}
+                                source={{uri: this.props.item.image}}
+                                />
                         </View>
                     </View>
-                    <View style={styles.bottomDetailContainer}>
-                        <View style={{height: '50%'}}>
-                            <View style={styles.bottomDetailContainerTextSytling}>
-                                <View style={{width: "30%", height: "100%"}}>
-                                    <Text style={{fontSize: 20, color: 'white'}}> *
-                                    </Text>
-                                </View>
-                                <View style={{ width: '50%', height: "100%"}}>
-                                    <Text style={{fontSize: 12, color: 'green'}}> Epsidoe 2 airs in 5 days
-                                    </Text>                                
+                    <View style={styles.detailContainer}>
+                        <View style={styles.topDetailContainer}>
+                            <View style={styles.titleContainer}>
+                                <Text style={{fontSize: 24, color: 'white'}}> {this.props.item.title}
+                                </Text>
+                            </View>
+                            <View style={styles.epsiodeContainer}>
+                                <Text style={{fontSize: 12, color: 'white'}}> 24 episodes
+                                </Text>
+                            </View>
+                        </View>
+                        <View style={styles.bottomDetailContainer}>
+                            <View style={{height: '50%'}}>
+                                <View style={styles.bottomDetailContainerTextSytling}>
+                                    <View style={{width: "30%", height: "100%"}}>
+                                        <Text style={{fontSize: 20, color: 'white'}}> *
+                                        </Text>
+                                    </View>
+                                    <View style={{ width: '50%', height: "100%"}}>
+                                        <Text style={{fontSize: 12, color: 'green'}}> Epsidoe 2 airs in 5 days
+                                        </Text>                                
+                                    </View>
                                 </View>
                             </View>
                         </View>
-                    </View>
-                </View>           
-            </View>
+                    </View>           
+                </View>
+            </TouchableOpacity>
         );
     }
 }

@@ -10,7 +10,7 @@ export default class MangaInfoDetail extends React.Component{
 						<Image
 							style={{flex: 1 , width: undefined, height: undefined}}
 							borderRadius={5}
-							source={require('../../img/4.jpg')}
+              source={{uri: this.props.item.image}}
 						/>
 					</View>
 					<View style={styles.containerDetail}>

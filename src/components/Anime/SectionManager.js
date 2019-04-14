@@ -11,7 +11,7 @@ export default class SectionManager extends Component<Props> {
             style={{
             }}
             horizontal={false}
-            data={[{key: 'a'}, {key: 'b'}, {key: 'c'}, {key: 'd'}, {key: 'e'}, {key: 'f'}, {key: 'g'}]}
+            data={this.props.itemList}
             renderItem={({ item,index}) => {
               return(
                 <Section navigation={this.props.navigation} item={item} index={index} imageUri={require('../../img/13.jpg')} name="Naruto"/>
