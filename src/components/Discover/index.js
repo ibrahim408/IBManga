@@ -28,6 +28,11 @@ export default class Discover extends Component<Props> {
       })
   }
 
+  getData(categ){
+    var data = this.state.material
+    return data.filter(data => data.category == categ);
+  }
+
   render() {
     console.log("ibeatTheCASE", this.state.material);
 
@@ -48,12 +53,12 @@ export default class Discover extends Component<Props> {
         <ScrollView style={styles.container}>
           <View style={{height: 35}}>
           </View>
-          <CategoryManager category={"SEASONAL - WINTER 2019"} itemList={this.state.material} navigation={this.props.navigation}  /> 
-          <CategoryManager category={"TOP RANDKED ANIME"} itemList={this.state.material} navigation={this.props.navigation} /> 
-          <CategoryManager category={"TOP AIRING ANIME"} itemList={this.state.material} navigation={this.props.navigation} /> 
-          <CategoryManager category={"MOST POPULAR ANIME"} itemList={this.state.material} navigation={this.props.navigation} /> 
-          <CategoryManager category={"TOP RANKED BOOKS"} itemList={this.state.material} navigation={this.props.navigation} /> 
-          <CategoryManager category={"MOST POPULAR MANGA"} itemList={this.state.material} navigation={this.props.navigation} /> 
+          <CategoryManager category={"SEASONAL - WINTER 2019"} itemList={this.getData("SEASONAL - WINTER 2019")} navigation={this.props.navigation}  /> 
+          <CategoryManager category={"TOP RANDKED ANIME"} itemList={this.getData("TOP RANDKED ANIME")} navigation={this.props.navigation} /> 
+          <CategoryManager category={"TOP AIRING ANIME"} itemList={this.getData("TOP AIRING ANIME")} navigation={this.props.navigation} /> 
+          <CategoryManager category={"MOST POPULAR ANIME"} itemList={this.getData("MOST POPULAR ANIME")} navigation={this.props.navigation} /> 
+          <CategoryManager category={"TOP RANKED BOOKS"} itemList={this.getData("TOP RANKED BOOKS")} navigation={this.props.navigation} /> 
+          <CategoryManager category={"MOST POPULAR MANGA"} itemList={this.getData("MOST POPULAR MANGA")} navigation={this.props.navigation} /> 
         </ScrollView>
       </View>
     );
