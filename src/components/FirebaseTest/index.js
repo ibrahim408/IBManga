@@ -19,8 +19,21 @@ export default class FirebaseTest extends Component{
 		});
 	}
 
+  readMaterialData = async function(){
+	  const materialData = [];
+
+	  firebase.firestore().collection('Material').get()
+	  	.then(querySnapshot => {
+	  		querySnapshot.docs.forEach(doc => {
+	  			console.log("checkingOneTimeFam", doc.data());
+	  			materialData.push(doc.data());
+	  		});
+	  	})
+
+	}
+
 	render(){
-		this.readUserData();
+		this.readMaterialData();
 
 		return(
 			<View style={styles.container}>

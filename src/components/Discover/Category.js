@@ -7,23 +7,31 @@ import {
     TouchableOpacity,
     Alert
 } from "react-native";
-
+import firebase from '../../Firebase';
 
 class Category extends Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            url: ''
+        }
+    }
+
     render() {
         return (
             <View style={{flex: 1}}>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('MangaDetail',{item: 3}, {title: 'WHATEVER'})}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('MangaDetail',{item: this.props.item}, {title: 'WHATEVER'})}>
                     <View style={styles.card}>
                         <View style={{ flex: 4 }}>
-                            <Image source={this.props.imageUri}
+                            <Image source={{uri: this.props.item.image}}
                                 style={{ flex: 1, width: null, height: null, resizeMode: 'cover', borderRadius: 10 }}
                             />
                         </View>
                         <View style={{flex: 1}}>
                             <View style={{paddingLeft: 5, paddingTop: 2}}>
                                 <Text style={{fontSize: 15, fontWeight: 'bold', color: 'white'}}>
-                                    Naruto
+                                    {this.props.title}
                                 </Text>
                             </View>
                         </View>
