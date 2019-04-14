@@ -5,6 +5,7 @@ import Category from './Category'
 export default class CategoryManager extends Component<Props> {
 
   render() {
+      
     return (
         <View style={{height: 200, marginBottom: 35, marginLeft: 10 }}>
           
