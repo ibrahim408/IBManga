@@ -1,39 +1,62 @@
-import React from "react";
-import { StyleSheet, View, Text } from 'react-native';
+import React, {Component} from "react";
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import Icon from "react-native-vector-icons/EvilIcons";
 
+export default class SectionHeader extends Component<Props> { 
+  
+  constructor(props){
+    super(props);
+    this.state = {
+      arrow: 'chevron-down'
+    }
+    this.arrowPressed = this.arrowPressed.bind(this);
+  } 
 
-const SectionHeader = ({title, count}) => {
-    
-  return (
-    <View style={styles.section}>
-      <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
-        <View style={styles.title}>
-          <View style={styles.textContainer}>
-            <Text style={{color: '#FFFFFF', fontSize: 15, alignSelf: 'flex-start'}}> {title}
-            </Text>
-          </View>
-        </View>
-        <View style={styles.arrowIcon}>
-          <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-              <Text style={{fontSize: 14, color: "white"}}> {count}
+  arrowPressed(){
+    if(this.state.arrow == "chevron-down"){
+      this.setState({
+        arrow: 'chevron-right'
+      })
+      return;  
+    }
+    this.setState({
+      arrow: 'chevron-down'
+    })  
+  }
+
+  render(){
+    return (
+      <View style={styles.section}>
+        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={styles.title}>
+            <View style={styles.textContainer}>
+              <Text style={{color: '#FFFFFF', fontSize: 15, alignSelf: 'flex-start'}}> {this.props.title}
               </Text>
             </View>
-            <View style={styles.arrow}>
-              <Icon
-                name="chevron-down"
-                color="#FFFFFF"
-                size={45}
-                onPress={this.puasePressd}
-              />          
-            </View>
-
           </View>
-        </View>       
-      </View>                                                                                                                
-    </View>
-  );
+          <View style={styles.arrowIcon}>
+            <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
+              <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <Text style={{fontSize: 14, color: "white"}}> {this.props.count}
+                </Text>
+              </View>
+              <View style={styles.arrow}>
+                <TouchableOpacity  onPress={this.arrowPressed}>
+                  <Icon
+                    name={this.state.arrow}
+                    color="#FFFFFF"
+                    size={45}
+                    onPress={this.puasePressd}
+                  />  
+                </TouchableOpacity>          
+              </View>
+
+            </View>
+          </View>       
+        </View>                                                                                                                
+      </View>
+    );
+  }
 };
 
 const styles = StyleSheet.create({
@@ -63,5 +86,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',    
   },  
 });
-
-export default SectionHeader;
