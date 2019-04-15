@@ -3,6 +3,8 @@ import { Dimensions, Platform, StyleSheet, FlatList, Text, View, Image, Touchabl
 import SectionManager from './SectionManager'
 import SectionHeader from './SectionHeader'
 import firebase from '../../Firebase';
+import { SearchBar } from 'react-native-elements';
+
 
 export default class Anime extends Component<Props> {
 
@@ -10,6 +12,7 @@ export default class Anime extends Component<Props> {
     super(props);
     this.state = {
       material: [],
+      text: ''
     }
   }
 
@@ -34,10 +37,31 @@ export default class Anime extends Component<Props> {
     return data.filter(data => data.saved == savedAs);
   }
 
+  filterSearch(text){
+    const newData = this.state.material.filter((item)=>{
+      const itemData = item.title.toUpperCase()
+      const textData = text.toUpperCase()
+      return itemData.indexOf(textData)>-1
+    });
+    this.setState({
+      material: newData,
+      text:text
+    });
+  }
+
   render() {
     return (
-      <ScrollView>
-        <View style={{flex: 1, backgroundColor: '#326D69'}}>      
+      <ScrollView style={{flex: 1}}>
+        <View style={{flex: 1, height: 58, width: '100%', backgroundColor: 'red'}}>
+          <SearchBar
+            round
+            autoCorrect={false} 
+            placeholder="Filter by name"
+            onChangeText={text => this.filterSearch(text)}
+            value={this.state.text}
+          />
+        </View>
+        <View style={{flex: 10, backgroundColor: '#326D69'}}>      
           <View>       
             <Image
               style={{
