@@ -1,6 +1,7 @@
 import React, {Component} from "react";
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
 import Icon from "react-native-vector-icons/EvilIcons";
+import Section from './Section'
 
 export default class SectionHeader extends Component<Props> { 
   
@@ -24,8 +25,30 @@ export default class SectionHeader extends Component<Props> {
     })  
   }
 
+  renderSection(){
+    if(this.state.arrow == "chevron-down"){
+      return(
+        <View style={{height: 200, backgroundColor: 'transparent' }}>
+          <FlatList
+            style={{
+            }}
+            horizontal={false}
+            data={this.props.itemList}
+            renderItem={({ item,index}) => {
+              return(
+                <Section navigation={this.props.navigation} item={item} index={index} imageUri={require('../../img/13.jpg')} name="Naruto"/>
+              );
+            }}
+          />
+        </View>
+      )
+    }
+  }
+
   render(){
     return (
+      <View style={{flex:1}}>
+      <TouchableOpacity onPress={this.arrowPressed}>
       <View style={styles.section}>
         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
           <View style={styles.title}>
@@ -41,19 +64,20 @@ export default class SectionHeader extends Component<Props> {
                 </Text>
               </View>
               <View style={styles.arrow}>
-                <TouchableOpacity  onPress={this.arrowPressed}>
                   <Icon
                     name={this.state.arrow}
                     color="#FFFFFF"
                     size={45}
                     onPress={this.puasePressd}
-                  />  
-                </TouchableOpacity>          
+                  />           
               </View>
 
             </View>
           </View>       
         </View>                                                                                                                
+      </View>
+      </TouchableOpacity>
+      {this.renderSection()}
       </View>
     );
   }

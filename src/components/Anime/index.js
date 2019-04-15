@@ -12,7 +12,14 @@ export default class Anime extends Component<Props> {
     super(props);
     this.state = {
       material: [],
-      text: ''
+      text: '',
+      section: [
+        { title: "Reading", arrow: 'chevron-down' },
+        { title: "Completed", arrow: 'chevron-down' },
+        { title: "On Hold", arrow: 'chevron-down' },
+        { title: "Dropped", arrow: 'chevron-down' },
+        { title: "Plan To Watch", arrow: 'chevron-down' },
+      ]
     }
   }
 
@@ -49,6 +56,18 @@ export default class Anime extends Component<Props> {
     });
   }
 
+
+  renderSections() {
+      return this.state.section.map((item) => {
+          return (
+            <View style={{flex: 1}}>
+            <SectionHeader navigation={this.props.navigation} itemList={this.getData(item.title)} title={"Reading"} count={"3"} />
+            </View>
+          );
+      });
+  }
+
+
   render() {
     return (
       <ScrollView style={{flex: 1}}>
@@ -72,17 +91,8 @@ export default class Anime extends Component<Props> {
               }}
               source={require('../../img/background4.png')}
             />          
-          </View>  
-          <SectionHeader title={"Reading"} count={"3"} />
-          <SectionManager navigation={this.props.navigation} itemList={this.getData("Reading")}  />
-          <SectionHeader title={"Completed"} count={"3"} /> 
-          <SectionManager navigation={this.props.navigation}  itemList={this.getData("Completed")}  />             
-          <SectionHeader title={"On Hold"} count="3" /> 
-          <SectionManager navigation={this.props.navigation}  itemList={this.getData("On Hold")}  />                     
-          <SectionHeader title={"Dropped"} count="3" />
-          <SectionManager navigation={this.props.navigation}  itemList={this.getData("Dropped")}  />          
-          <SectionHeader title={"Plan To Watch"} count="4" />
-          <SectionManager navigation={this.props.navigation}  itemList={this.getData("Plan To Watch")}  />          
+          </View>
+          {this.renderSections()}  
         </View>
       </ScrollView>
     );
