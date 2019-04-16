@@ -1,39 +1,38 @@
 import React, {Component} from 'react'
 import {Platform, StyleSheet, Text, View, Image, FlatList} from 'react-native';
 import Characters from './Characters'
+import firebase from '../../Firebase';
 
 export default class MangaInfoCharacters extends React.Component{
-	  getData() {
-	    return [
-	      {
-	        key: 1, title: 'Albert Einstein',
-	        description: 'Video 00:34',
-	        image_url: require('../../img/1.jpg')
-	      },
-	      {
-	        key: 2,
-	        title: 'Isaac newton',
-	        description: 'Video 00:34',
-	        image_url: require('../../img/2.jpg')
-	      },
-	      {
-	        key: 3, title: 'Albert Einstein',
-	        description: 'Video 00:34',
-	        image_url: require('../../img/3.jpg')
-	      },
-	      {
-	        key: 4,
-	        title: 'Isaac newton',
-	        description: 'Video 00:34',
-	        image_url: require('../../img/2.jpg')
-	      },
-	      {
-	        key: 5, title: 'Albert Einstein',
-	        description: 'Video 00:34',
-	        image_url: require('../../img/3.jpg')
-	      }
-	    ]
+
+	  constructor(props){
+	    super(props);
+	    this.state = {
+	      material: [],
+	    }
 	  }
+
+	  componentDidMount(){
+	    const materialData = [];
+
+	    firebase.firestore().collection('Characters').get()
+	      .then(querySnapshot => {
+	        querySnapshot.docs.forEach(doc => {
+	          console.log("checkingOneTimeFam", doc.data());
+	          materialData.push(doc.data());
+	        });
+	      }).then(() => {
+	        this.setState({
+	          material: materialData
+	        })
+	      })
+	  }	 
+
+	  getData(Anime){
+	    var data = this.state.material
+	    return data.filter(data => data.Anime == Anime);
+	  }
+
 
 	render(){
 		return(
@@ -42,7 +41,7 @@ export default class MangaInfoCharacters extends React.Component{
 					style={{
 					}}
 					horizontal={true}
-					data={this.getData()}
+					data={this.getData(this.props.animeTitle)}
 					renderItem={({ item,index}) => {
 					  return(
 					    <Characters item={item} imageUri={require('../../img/13.jpg')} name="Naruto"/>

@@ -80,7 +80,7 @@ export default class MangaInfo extends React.Component{
 						</Text>
 					</View>
 				</View>
-				<MangaInfoCharacters />
+				<MangaInfoCharacters animeTitle={this.props.item.title} />
 			</View>
 		);
 	}

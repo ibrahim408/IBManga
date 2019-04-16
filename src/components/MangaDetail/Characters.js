@@ -18,17 +18,17 @@ class Characters extends Component {
                         <Image
                             style={{flex: 1, width: undefined, height: undefined}}
                             borderRadius={5}
-                            source={this.props.item.image_url}
+                            source={{uri: this.props.item.image}}
                             />
                     </View>
                 </View>
                 <View style={styles.detailContainer}>
                     <View style={styles.nameContainer}>
-                        <Text style={{fontWeight: "bold", fontSize: 16, color: 'white'}}>Dororo
+                        <Text style={{fontWeight: "bold", fontSize: 16, color: 'white'}}>{this.props.item.name}
                         </Text>
                     </View>
                     <View style={styles.roleContainer}>
-                        <Text style={{fontSize: 12, color: 'white'}}>Main
+                        <Text style={{fontSize: 12, color: 'white'}}>{this.props.item.role}
                         </Text>
                     </View>
                 </View>
