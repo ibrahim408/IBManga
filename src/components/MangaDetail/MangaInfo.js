@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Alert, Platform, StyleSheet, Text, View, Image, TouchableHighlight, Button} from 'react-native';
 import MangaInfoDetail from './MangaInfoDetail'
+import MangaInfoCharacters from './MangaInfoCharacters'
 
 export default class MangaInfo extends React.Component{
 	
@@ -73,7 +74,13 @@ export default class MangaInfo extends React.Component{
 					</View>
 					<View style = {styles.lineStyle} />	
 				</View>	
-
+				<View style={{height: 20, width: '100%'}}>
+					<View style={styles.characterSectionHeader}>
+						<Text style={{ fontSize: 14, color: 'white'}}> CHARACTERS
+						</Text>
+					</View>
+				</View>
+				<MangaInfoCharacters />
 			</View>
 		);
 	}
@@ -98,5 +105,8 @@ const styles = StyleSheet.create({
    extraDetailDos: {
    	height: 200,
    	flexDirection: 'column',
+   },
+   characterSectionHeader:{
+   	marginLeft: 5
    }
 });
