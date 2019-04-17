@@ -2,14 +2,73 @@ import React, {Component} from 'react'
 import {Alert, Platform, StyleSheet, Text, View, Image, TouchableHighlight, Button} from 'react-native';
 import MangaInfoDetail from './MangaInfoDetail'
 import MangaInfoCharacters from './MangaInfoCharacters'
+import ModalFilterPicker from 'react-native-modal-filter-picker'
+import firebase from '../../Firebase';
 
 export default class MangaInfo extends React.Component{
 	
+	constructor(props){
+		super(props);
+		this.state = {
+			picked: null,
+			visible: false,
+			list: [
+				{key: 'Plan To Watch', label: 'Plan To Watch'},
+				{key: 'Watching', label: 'Watching'},
+				{key: 'On Hold', label: 'On Hold'},
+				{key: 'Dropped', label: 'Dropped'},
+				{key: 'Completed', label: 'Completed'},
+				{key: 'Rewatching', label: 'Rewatching'},
+			]
+		}
+	}	
+	updateSaveValue = (savedAs) => {
+		var Anime = firebase.firestore().collection("Material").doc(this.props.item.id);
+
+		// Set the "capital" field of the city 'DC'
+		return Anime.update({
+		    saved: savedAs
+		})
+		.then(function() {
+		    console.log("WorkWorkWork!");
+		})
+		.catch(function(error) {
+		    // The document probably doesn't exist.
+		    console.error("gotdamnlitlebitch", error);
+		});	
+	}
+
 	addToList(){
 		Alert.alert('You tapped the button!')
 	}
 
+    onShow = () => {
+    	this.setState({ visible: true });
+    }
+
+    onSelect = (picked) => {
+    	this.updateSaveValue(picked);
+
+    	this.setState({
+    		picked: picked,
+    		visible: false
+    	})
+    }
+
+    onCancel = () => {
+    	this.setState({
+    		visible: false
+    	});
+    }
+
 	render(){
+		const {visible, picked} = this.state;
+		var saved = this.props.item.saved;
+
+		if(this.props.item.saved == null || this.props.item.saved == "undefined"){
+			saved = "ADD TO LIST?"
+		}
+
 		return(
 			<View style={{flex: 1}}>
 				<View style={styles.container}>
@@ -19,8 +78,8 @@ export default class MangaInfo extends React.Component{
 						<View style={{flex: 1, justifyContent: 'center'}}>
 							<View style={{height: 40, margin: 5, borderRadius: 4, opacity: 0.5, backgroundColor: '#888888'}}>
 								<Button
-									onPress={this.addToList}
-									title="ADD To List?"
+									onPress={this.onShow}
+									title={saved}
 									color="white"
 								/>
 							</View>		
@@ -32,6 +91,12 @@ export default class MangaInfo extends React.Component{
 									title="-/- CH"
 									color="white"
 								/>
+									<ModalFilterPicker
+							          visible={visible}
+							          onSelect={this.onSelect}
+							          onCancel={this.onCancel}
+							          options={this.state.list}
+							        />
 							</View>						
 						</View>
 						<View style={{flex: 1, justifyContent: 'center'}}>

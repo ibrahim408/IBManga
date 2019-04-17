@@ -18,8 +18,9 @@ export default class Discover extends Component<Props> {
     firebase.firestore().collection('Material').get()
       .then(querySnapshot => {
         querySnapshot.docs.forEach(doc => {
-          console.log("checkingOneTimeFam", doc.data());
-          materialData.push(doc.data());
+          mdata = doc.data();
+          mdata.id = doc.id;
+          materialData.push(mdata);
         });
       }).then(() => {
         this.setState({
