@@ -6,7 +6,6 @@ import List from './src/components/List'
 import MangaDetail from './src/components/MangaDetail'
 import FirebaseTest from './src/components/FirebaseTest'
 import Anime from './src/components/Anime'
-import Manga from './src/components/Manga'
 import Settings from './src/components/Settings'
         //headerBackImage: require('./src/img/background4.png'),
 
@@ -57,18 +56,6 @@ const AppNavigator = createStackNavigator(
         headerBackTitle: 'Discover'
       })
     },
-    Manga:{
-      screen: Manga,
-      navigationOptions: () => ({
-        title: `Manga`,
-        headerStyle: {
-          backgroundColor: '#132942'
-        },
-        headerTintColor: 'white',
-        headerLayoutPreset: 'left',
-        headerBackTitle: 'Discover'
-      })
-    },
     Settings:{
       screen: Settings,
       navigationOptions: () => ({
@@ -83,7 +70,7 @@ const AppNavigator = createStackNavigator(
     }
   },
   {
-    initialRouteName: "Manga"
+    initialRouteName: "Anime"
   }
 );
 
