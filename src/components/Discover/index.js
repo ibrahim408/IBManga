@@ -2,9 +2,19 @@ import React, {Component} from 'react';
 import { Dimensions, Platform, StyleSheet, FlatList, Text, View, Image, TouchableOpacity, SectionList,ScrollView} from 'react-native';
 import CategoryManager from './CategoryManager'
 import firebase from '../../Firebase';
+import Anime from '../Anime'
+import Settings from '../Settings'
+import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
+import Icon from "react-native-vector-icons/AntDesign";
 
-export default class Discover extends Component<Props> {
-  
+class Discover extends Component<Props> {
+  static navigationOptions = {
+    tabBarIcon: ({ tintColor }) => (
+      <Icon name="search1" size={25} color="grey" />
+    )
+  };
+
+
   constructor(props){
     super(props);
     this.state = {
@@ -72,3 +82,36 @@ const styles = StyleSheet.create({
   }
 });
 
+const AppNavigator = createBottomTabNavigator({
+   Discover: {
+      screen: Discover,
+   },
+   Anime: {
+     screen: Anime,
+   },
+   Settings: {
+    screen: Settings,
+   }
+ }, { 
+
+   // This will get the tabs to show their labels/icons at the bottom.
+   tabBarPosition: 'bottom',
+
+  animationEnabled: true,
+  tabBarOptions: {
+    style: {
+                backgroundColor: '#132942',
+                opacity: 1,
+                height: 55,
+                borderTopColor: 'transparent',
+                borderTopWidth: 1,
+                paddingRight: 10,
+                paddingLeft: 10,
+                borderTopWidth: 1,
+                borderTopColor: 'grayPlaceHolder'
+    },
+    activeTintColor: 'white',
+  }
+});
+
+export default createAppContainer(AppNavigator);

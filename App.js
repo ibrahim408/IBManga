@@ -70,7 +70,7 @@ const AppNavigator = createStackNavigator(
     }
   },
   {
-    initialRouteName: "Anime"
+    initialRouteName: "Discover"
   }
 );
 

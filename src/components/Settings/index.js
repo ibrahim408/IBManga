@@ -1,8 +1,15 @@
 import React, {Component} from 'react'
 import {View,Text,StyleSheet, Image, Alert, Dimensions} from 'react-native'
 import SettingsList from 'react-native-settings-list';
+import Icon from "react-native-vector-icons/AntDesign";
 
 export default class Settings extends Component{
+  static navigationOptions = {
+    tabBarIcon: ({ tintColor }) => (
+      <Icon name="setting" size={30} color="grey" />
+    )
+  };
+
 	render(){
 		return(
 		    <View style={{backgroundColor:'#EFEFF4',flex:1}}>

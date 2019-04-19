@@ -3,9 +3,16 @@ import { Dimensions, Platform, StyleSheet, FlatList, Text, View, Image, Touchabl
 import SectionManager from './SectionManager'
 import firebase from '../../Firebase';
 import { SearchBar } from 'react-native-elements';
-
+import Discover from '../Discover'
+import Icon from "react-native-vector-icons/Entypo";
 
 export default class Anime extends Component<Props> {
+
+  static navigationOptions = {
+    tabBarIcon: ({ tintColor }) => (
+      <Icon name="open-book" size={25} color="grey" />
+    )
+  };
 
   constructor(props){
     super(props);
@@ -110,4 +117,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF'
   }
 });
-
