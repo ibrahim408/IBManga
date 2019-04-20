@@ -55,7 +55,7 @@ export default class MangaInfoDetail extends React.Component{
                   <View style={{flex: 1, flexDirection: 'column'}}>
                     <Text style={{fontSize: 12, color: 'grey'}}> PUBLISHED
                     </Text>
-                    <Text style={{fontSize: 12, color: 'white'}}> Aug 1989
+                    <Text style={{fontSize: 12, color: 'white'}}> {this.props.item.published}
                     </Text>
                   </View>
                 </View>              

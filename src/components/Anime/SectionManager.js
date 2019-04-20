@@ -7,9 +7,17 @@ export default class SectionManager extends Component<Props> {
   
   constructor(props){
     super(props);
-    this.state = {
-      arrow: this.props.section.arrow
+
+    if(this.props.itemList.length > 0 ){
+      this.state = {
+        arrow: 'chevron-down'
+      }
+    }else {
+      this.state = {
+        arrow: 'chevron-right'
+      }
     }
+
     this.arrowPressed = this.arrowPressed.bind(this);
   } 
 
@@ -26,9 +34,11 @@ export default class SectionManager extends Component<Props> {
   }
 
   renderSection(){
+    var h = 100 * this.props.itemList.length;
+
     if(this.state.arrow == "chevron-down"){
       return(
-        <View style={{height: 200, backgroundColor: 'transparent' }}>
+        <View style={{height: h, backgroundColor: 'transparent' }}>
           <FlatList
             style={{
             }}
@@ -60,7 +70,7 @@ export default class SectionManager extends Component<Props> {
           <View style={styles.arrowIcon}>
             <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
               <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <Text style={{fontSize: 14, color: "white"}}> {this.props.count}
+                <Text style={{fontSize: 14, color: "white"}}> {this.props.itemList.length}
                 </Text>
               </View>
               <View style={styles.arrow}>

@@ -29,7 +29,7 @@ class Discover extends Component<Props> {
       .then(querySnapshot => {
         querySnapshot.docs.forEach(doc => {
           mdata = doc.data();
-          mdata.id = doc.id;
+          mdata.key = doc.id;
           materialData.push(mdata);
         });
       }).then(() => {

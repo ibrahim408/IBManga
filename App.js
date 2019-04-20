@@ -2,12 +2,10 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Image} from 'react-native';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import Discover from './src/components/Discover'
-import List from './src/components/List'
 import MangaDetail from './src/components/MangaDetail'
-import FirebaseTest from './src/components/FirebaseTest'
 import Anime from './src/components/Anime'
 import Settings from './src/components/Settings'
-        //headerBackImage: require('./src/img/background4.png'),
+
 
 class App extends React.Component {
   render() {
@@ -19,7 +17,6 @@ class App extends React.Component {
 
 const AppNavigator = createStackNavigator(
   {
-    FirebaseTest: FirebaseTest,
     Discover: {
       screen: Discover,
       navigationOptions: () => ({

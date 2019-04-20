@@ -21,9 +21,9 @@ export default class Anime extends Component<Props> {
       text: '',
       section: [
         { key: 1, title: "Reading", arrow: 'chevron-right' },
-        { key: 2, title: "Completed", arrow: 'chevron-down' },
-        { key: 3, title: "On Hold", arrow: 'chevron-down' },
-        { key: 4, title: "Dropped", arrow: 'chevron-down' },
+        { key: 2, title: "Completed", arrow: 'chevron-right' },
+        { key: 3, title: "On Hold", arrow: 'chevron-right' },
+        { key: 4, title: "Dropped", arrow: 'chevron-right' },
         { key: 5, title: "Plan To Watch", arrow: 'chevron-down' },
       ]
     }
@@ -36,7 +36,7 @@ export default class Anime extends Component<Props> {
       .then(querySnapshot => {
         querySnapshot.docs.forEach(doc => {
           mdata = doc.data();
-          mdata.id = doc.id;
+          mdata.key = doc.id;
           materialData.push(mdata);
         });
       }).then(() => {
@@ -49,7 +49,8 @@ export default class Anime extends Component<Props> {
 
   getData(savedAs){
     var data = this.state.material
-    return data.filter(data => data.saved == savedAs);
+    filteredData = data.filter(data => data.saved == savedAs);
+    return filteredData;
   }
 
   filterSearch(text){
@@ -68,8 +69,8 @@ export default class Anime extends Component<Props> {
   renderSections() {
       return this.state.section.map((item) => {
           return (
-            <View style={{flex: 1}}>
-            <SectionManager navigation={this.props.navigation} section={item} itemList={this.getData(item.title)} title={item.title} count={"3"} />
+            <View key={item.key} style={{flex: 1}}>
+            <SectionManager key={item.key} navigation={this.props.navigation} section={item} itemList={this.getData(item.title)} title={item.title} count={"3"} />
             </View>
           );
       });
@@ -78,31 +79,44 @@ export default class Anime extends Component<Props> {
 
   render() {
     return (
-      <ScrollView style={{flex: 1}}>
-        <View style={{flex: 1, height: 58, width: '100%', backgroundColor: 'red'}}>
-          <SearchBar
-            round
-            autoCorrect={false} 
-            placeholder="Filter by name"
-            onChangeText={text => this.filterSearch(text)}
-            value={this.state.text}
-          />
+      <View style={{flex: 1}}>
+        <View>       
+          <Image
+            style={{
+              height: Dimensions.get('window').height,
+              width: Dimensions.get('window').width,
+              position: 'absolute',
+              opacity: 1,
+            }}
+            source={require('../../img/background4.png')}
+          />          
         </View>
-        <View style={{flex: 10, backgroundColor: '#326D69'}}>      
-          <View>       
-            <Image
-              style={{
-                height: Dimensions.get('window').height,
-                width: Dimensions.get('window').width,
-                position: 'absolute',
-                opacity: 1,
-              }}
-              source={require('../../img/background4.png')}
-            />          
+        <ScrollView style={{flex: 1}}>
+          <View style={{flex: 1, height: 58, width: '100%', backgroundColor: 'red'}}>
+            <SearchBar
+              round
+              autoCorrect={false} 
+              placeholder="Filter by name"
+              onChangeText={text => this.filterSearch(text)}
+              value={this.state.text}
+            />
           </View>
-          {this.renderSections()}  
-        </View>
-      </ScrollView>
+          <View style={{flex: 10, backgroundColor: 'transparent'}}>      
+            <View>       
+              <Image
+                style={{
+                  height: Dimensions.get('window').height,
+                  width: Dimensions.get('window').width,
+                  position: 'absolute',
+                  opacity: 1,
+                }}
+                source={require('../../img/background4.png')}
+              />          
+            </View>
+            {this.renderSections()}  
+          </View>
+        </ScrollView>
+      </View>
     );
   }
 }

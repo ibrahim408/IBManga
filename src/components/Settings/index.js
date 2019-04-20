@@ -51,19 +51,19 @@ export default class Settings extends Component{
 		            title='Passcode'
 		            titleStyle={{color: 'white'}}
 		            titleInfoStyle={styles.titleInfoStyle}
-		            onPress={() => Alert.alert('Route to Blutooth Page')}
+		            onPress={() => Alert.alert('Route to Blutooth Page in progress')}
 		          />
 		          <SettingsList.Item
 		            icon={<Image style={styles.imageStyle} source={require('../../img/iconThree.png')}/>}
 		            title='Cellular'
 		            titleStyle={{color: 'white'}}
-		            onPress={() => Alert.alert('Route To Cellular Page')}
+		            onPress={() => Alert.alert('Route To Cellular Page in progress')}
 		          />
 		          <SettingsList.Item
 		            icon={<Image style={styles.imageStyle} source={require('../../img/twitter.png')}/>}
 		            title='twitter'
 		            titleStyle={{color: 'white'}}
-		            onPress={() => Alert.alert('Route To Do Not Disturb Page')}
+		            onPress={() => Alert.alert('Route To Do Not Disturb Page in progress')}
 		          />		          
 		          <SettingsList.Item
 		            icon={<Image style={styles.imageStyle} source={require('../../img/iconFour.png')}/>}
@@ -71,19 +71,19 @@ export default class Settings extends Component{
 		            titleStyle={{color: 'white'}}
 		            titleInfo='Off'
 		            titleInfoStyle={styles.titleInfoStyle}
-		            onPress={() => Alert.alert('Route To Hotspot Page')}
+		            onPress={() => Alert.alert('Route To Hotspot Page in progress')}
 		          />
 		          <SettingsList.Item
 		            icon={<Image style={styles.imageStyle} source={require('../../img/iconTwo.png')}/>}
 		            title='Rate IBManga'
 		            titleStyle={{color: 'white'}}
-		            onPress={() => Alert.alert('Route To Notifications Page')}
+		            onPress={() => Alert.alert('Route To Notifications Page in progress')}
 		          />
 		          <SettingsList.Item
 		            icon={<Image style={styles.imageStyle} source={require('../../img/iconOne.png')}/>}
 		            title='About'
 		            titleStyle={{color: 'white'}}
-		            onPress={() => Alert.alert('Route To Control Center Page')}
+		            onPress={() => Alert.alert('Control Center Page in progress')}
 		          />
 		        </SettingsList>
 		      </View>

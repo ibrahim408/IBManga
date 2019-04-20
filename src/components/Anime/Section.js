@@ -10,7 +10,13 @@ import {
 
 
 class Section extends Component {
+
+    
     render() {
+    var thisEpisode = Number(this.props.item.episodes );    
+    var nextEpisode = thisEpisode + 1;
+    var AirsIn = Math.floor(Math.random() * 14) + 1 ;
+    
         return (
             <TouchableOpacity onPress={() => this.props.navigation.navigate('MangaDetail',{item: this.props.item}, {title: 'WHATEVER'})}>
                 <View style={styles.container}>
@@ -30,7 +36,7 @@ class Section extends Component {
                                 </Text>
                             </View>
                             <View style={styles.epsiodeContainer}>
-                                <Text style={{fontSize: 12, color: 'white'}}> 24 episodes
+                                <Text style={{fontSize: 12, color: 'white'}}> {this.props.item.episodes} episodes 
                                 </Text>
                             </View>
                         </View>
@@ -42,7 +48,7 @@ class Section extends Component {
                                         </Text>
                                     </View>
                                     <View style={{ width: '50%', height: "100%"}}>
-                                        <Text style={{fontSize: 12, color: 'green'}}> Epsidoe 2 airs in 5 days
+                                        <Text style={{fontSize: 12, color: 'green'}}> Epsidoe {nextEpisode} airs in {AirsIn} days
                                         </Text>                                
                                     </View>
                                 </View>

@@ -23,7 +23,7 @@ export default class MangaInfo extends React.Component{
 		}
 	}	
 	updateSaveValue = (savedAs) => {
-		var Anime = firebase.firestore().collection("Material").doc(this.props.item.id);
+		var Anime = firebase.firestore().collection("Material").doc(this.props.item.key);
 
 		// Set the "capital" field of the city 'DC'
 		return Anime.update({
@@ -111,7 +111,7 @@ export default class MangaInfo extends React.Component{
 					</View>
 					
 					<View style={styles.subContainer3}>
-						<Text> Naruto (ナルト) is a Japanese manga series written and illustrated by Masashi Kishimoto. It tells the story of Naruto Uzumaki, an adolescent ninja who searches for recognition from his peers and the village and also dreams of becoming the Hokage, the leader of his village. The story is in two parts, the first set in Naruto's pre-teen years, and the second in his teens. The series is based on two one-shot manga by Kishimoto: Karakuri (1995), which earned Kishimoto an honorable mention in Shueisha's monthly Hop Step Award the following year, and Naruto (1997).
+						<Text style={{color: 'white'}}>{this.props.item.description}
 						</Text>
 					</View>	
 
@@ -145,7 +145,7 @@ export default class MangaInfo extends React.Component{
 						</Text>
 					</View>
 				</View>
-				<MangaInfoCharacters animeTitle={this.props.item.title} />
+				<MangaInfoCharacters animeTitle={this.props.item.key} />
 			</View>
 		);
 	}
@@ -160,7 +160,9 @@ const styles = StyleSheet.create({
   	flexDirection: 'row'
   },
   subContainer3:{
-  	flex: 2
+  	flex: 2,
+	paddingLeft: 15,
+    marginRight: 15
   },
   lineStyle:{
         borderWidth: 0.5,
