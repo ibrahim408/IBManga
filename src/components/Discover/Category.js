@@ -25,7 +25,7 @@ class Category extends Component {
                     <View style={styles.card}>
                         <View style={{ flex: 4 }}>
                             <Image source={{uri: this.props.item.image}}
-                                style={{ flex: 1, width: null, height: null, resizeMode: 'cover', borderRadius: 10 }}
+                                style={{ flex: 1, width: null, height: null, resizeMode: 'cover', borderRadius: 2 }}
                             />
                         </View>
                         <View style={{flex: 1}}>
