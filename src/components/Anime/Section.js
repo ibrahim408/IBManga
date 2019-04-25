@@ -23,7 +23,7 @@ class Section extends Component {
                     <View style={styles.imageContainer}>
                         <View style={styles.imageStyling}>
                             <Image
-                                style={{flex:1, height: null, width: null}}
+                                style={{flex:1, height: null, width: null,borderRadius: 2}}
                                 resizeMode={'stretch'}
                                 source={{uri: this.props.item.image}}
                                 />
@@ -75,7 +75,6 @@ const styles = StyleSheet.create({
     imageStyling: {
         height: '95%',
         width: '70%',
-        borderRadius: 5,
         overflow: 'hidden',
     },
     detailContainer: {
