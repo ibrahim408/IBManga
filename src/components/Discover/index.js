@@ -6,46 +6,46 @@ import Anime from '../Anime'
 import Settings from '../Settings'
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import Icon from "react-native-vector-icons/AntDesign";
+import {connect} from 'react-redux'
+import {getMaterials} from '../../redux/actions/App'
+
+
+const mapStateToProps = function(state) {
+  console.log("yoooooo",state.material.allMaterial);
+  return {
+    allMaterial: state.material.allMaterial,
+  }
+}
+
+const mapDispatchToProps = {
+  getMaterials
+}
+
 
 class Discover extends Component<Props> {
+
   static navigationOptions = {
     tabBarIcon: ({ tintColor }) => (
       <Icon name="search1" size={25} color="grey" />
     )
   };
-
-
-  constructor(props){
-    super(props);
-    this.state = {
-      material: [],
-    }
+  
+  constructor() {
+    super();
   }
-
   componentDidMount(){
-    const materialData = [];
-
-    firebase.firestore().collection('Material').get()
-      .then(querySnapshot => {
-        querySnapshot.docs.forEach(doc => {
-          mdata = doc.data();
-          mdata.key = doc.id;
-          materialData.push(mdata);
-        });
-      }).then(() => {
-        this.setState({
-          material: materialData
-        })
-      })
+    this.props.getMaterials();
   }
 
   getData(categ){
-    var data = this.state.material
+    if (!this.props.allMaterial) return this.props.allMaterial;
+    var data = this.props.allMaterial
     return data.filter(data => data.category == categ);
   }
 
   render() {
-    console.log("ibeatTheCASE", this.state.material);
+     const { allMaterial } = this.props;
+     console.log("12312312324344",this.props.allMaterial);
 
 
     return (
@@ -82,36 +82,5 @@ const styles = StyleSheet.create({
   }
 });
 
-const AppNavigator = createBottomTabNavigator({
-   Discover: {
-      screen: Discover,
-   },
-   Anime: {
-     screen: Anime,
-   },
-   Settings: {
-    screen: Settings,
-   }
- }, { 
 
-   // This will get the tabs to show their labels/icons at the bottom.
-   tabBarPosition: 'bottom',
-
-  animationEnabled: true,
-  tabBarOptions: {
-    style: {
-                backgroundColor: '#132942',
-                opacity: 1,
-                height: 55,
-                borderTopColor: 'transparent',
-                borderTopWidth: 1,
-                paddingRight: 10,
-                paddingLeft: 10,
-                borderTopWidth: 1,
-                borderTopColor: 'grayPlaceHolder'
-    },
-    activeTintColor: 'white',
-  }
-});
-
-export default createAppContainer(AppNavigator);
+export default connect(mapStateToProps,mapDispatchToProps)(Discover);
