@@ -4,8 +4,22 @@ import MangaInfoDetail from './MangaInfoDetail'
 import MangaInfoCharacters from './MangaInfoCharacters'
 import ModalFilterPicker from 'react-native-modal-filter-picker'
 import firebase from '../../Firebase';
+import {updateMaterial, getMaterials} from '../../redux/actions/App'
+import { connect } from "react-redux";
 
-export default class MangaInfo extends React.Component{
+const mapDispatchToProps = {
+  updateMaterial,
+  getMaterials
+}
+
+const mapStateToProps = function(state) {
+  return {
+    allMaterial: state.material.allMaterial,
+  }
+}
+
+
+class MangaInfo extends React.Component{
 	
 	constructor(props){
 		super(props);
@@ -22,20 +36,14 @@ export default class MangaInfo extends React.Component{
 			]
 		}
 	}	
-	updateSaveValue = (savedAs) => {
-		var Anime = firebase.firestore().collection("Material").doc(this.props.item.key);
 
-		// Set the "capital" field of the city 'DC'
-		return Anime.update({
-		    saved: savedAs
-		})
-		.then(function() {
-		    console.log("WorkWorkWork!");
-		})
-		.catch(function(error) {
-		    // The document probably doesn't exist.
-		    console.error("gotdamnlitlebitch", error);
-		});	
+  componentDidMount(){
+  	console.log("looking for bleach",this.props.allMaterial[0]);
+  }
+
+	updateSaveValue = (savedAs) => {
+		this.props.updateMaterial(this.props.item.key, savedAs);
+		this.props.getMaterials();
 	}
 
 	addToList(){
@@ -62,9 +70,13 @@ export default class MangaInfo extends React.Component{
     }
 
 	render(){
-		const {visible, picked} = this.state;
-		var saved = this.props.item.saved;
+		var currentMaterial;
+		if(this.props.allMaterial){
+			currentMaterial = this.props.allMaterial.find( material => material.title === this.props.item.title );
+		}
 
+		const {visible, picked} = this.state;
+        var saved = currentMaterial.saved;
 		if(this.props.item.saved == null || this.props.item.saved == "undefined"){
 			saved = "ADD TO LIST?"
 		}
@@ -177,3 +189,5 @@ const styles = StyleSheet.create({
    	marginLeft: 5
    }
 });
+
+export default connect( mapStateToProps, mapDispatchToProps )(MangaInfo);

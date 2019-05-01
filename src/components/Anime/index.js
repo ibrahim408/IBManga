@@ -5,8 +5,15 @@ import firebase from '../../Firebase';
 import { SearchBar } from 'react-native-elements';
 import Discover from '../Discover'
 import Icon from "react-native-vector-icons/Entypo";
+import {connect} from 'react-redux'
 
-export default class Anime extends Component<Props> {
+const mapStateToProps = function(state) {
+  return {
+    allMaterial: state.material.allMaterial,
+  }
+}
+
+class Anime extends Component<Props> {
 
   static navigationOptions = {
     tabBarIcon: ({ tintColor }) => (
@@ -28,33 +35,20 @@ export default class Anime extends Component<Props> {
       ]
     }
   }
-
   componentDidMount(){
-    const materialData = [];
-
-    firebase.firestore().collection('Material').get()
-      .then(querySnapshot => {
-        querySnapshot.docs.forEach(doc => {
-          mdata = doc.data();
-          mdata.key = doc.id;
-          materialData.push(mdata);
-        });
-      }).then(() => {
-        this.setState({
-          material: materialData
-        })
-      })
-
+    this.setState({ material: this.props.allMaterial });
   }
 
   getData(savedAs){
+    if (!this.state.material) return this.state.material;
     var data = this.state.material
-    filteredData = data.filter(data => data.saved == savedAs);
-    return filteredData;
+    return data.filter(data => data.saved == savedAs);
   }
 
   filterSearch(text){
-    const newData = this.state.material.filter((item)=>{
+    const searchMaterialWithText = Object.create(this.props.allMaterial);
+
+    const newData = searchMaterialWithText.filter((item)=>{
       const itemData = item.title.toUpperCase()
       const textData = text.toUpperCase()
       return itemData.indexOf(textData)>-1
@@ -131,3 +125,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF'
   }
 });
+
+export default connect(mapStateToProps,null)(Anime);

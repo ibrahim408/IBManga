@@ -2,9 +2,16 @@ import React, {Component} from 'react'
 import {Platform, StyleSheet, Text, View, Image, FlatList} from 'react-native';
 import Characters from './Characters'
 import firebase from '../../Firebase';
+import {connect} from 'react-redux'
 
-export default class MangaInfoCharacters extends React.Component{
+const mapStateToProps = function(state) {
+  return {
+    allCharacters: state.characters.allCharacters,
+  }
+}
 
+class MangaInfoCharacters extends React.Component{
+	
 	  constructor(props){
 	    super(props);
 	    this.state = {
@@ -12,27 +19,11 @@ export default class MangaInfoCharacters extends React.Component{
 	    }
 	  }
 
-	  componentDidMount(){
-	    const materialData = [];
-
-	    firebase.firestore().collection('Characters').get()
-	      .then(querySnapshot => {
-	        querySnapshot.docs.forEach(doc => {
-	          console.log("checkingOneTimeFam", doc.data());
-	          materialData.push(doc.data());
-	        });
-	      }).then(() => {
-	        this.setState({
-	          material: materialData
-	        })
-	      })
-	  }	 
-
 	  getData(Anime){
-	    var data = this.state.material
+	  	if (!this.props.allCharacters) return this.props.allCharacters;
+	    var data = this.props.allCharacters
 	    return data.filter(data => data.Anime == Anime);
 	  }
-
 
 	render(){
 		return(
@@ -52,3 +43,5 @@ export default class MangaInfoCharacters extends React.Component{
 		);
 	}
 }
+
+export default connect(mapStateToProps,null)(MangaInfoCharacters);

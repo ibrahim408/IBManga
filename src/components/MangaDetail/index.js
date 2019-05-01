@@ -7,10 +7,6 @@ export default class MangaDetail extends React.Component{
 	render(){
 		const { navigation } = this.props;
 	    const item = navigation.getParam('item', 'NO-ID');
-
-	    console.log("bigMoMovesOnly",item);
-
-
 		return(
 			<View style={{flex: 1}}>
 				<ImageBackground
@@ -33,3 +29,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#ccffcc'
   }
 });
+

@@ -7,20 +7,12 @@ import Settings from '../Settings'
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import Icon from "react-native-vector-icons/AntDesign";
 import {connect} from 'react-redux'
-import {getMaterials} from '../../redux/actions/App'
-
 
 const mapStateToProps = function(state) {
-  console.log("yoooooo",state.material.allMaterial);
   return {
     allMaterial: state.material.allMaterial,
   }
 }
-
-const mapDispatchToProps = {
-  getMaterials
-}
-
 
 class Discover extends Component<Props> {
 
@@ -33,9 +25,6 @@ class Discover extends Component<Props> {
   constructor() {
     super();
   }
-  componentDidMount(){
-    this.props.getMaterials();
-  }
 
   getData(categ){
     if (!this.props.allMaterial) return this.props.allMaterial;
@@ -44,10 +33,6 @@ class Discover extends Component<Props> {
   }
 
   render() {
-     const { allMaterial } = this.props;
-     console.log("12312312324344",this.props.allMaterial);
-
-
     return (
       <View style={{flex: 1, backgroundColor: 'transparent' }}>
         <View>
@@ -83,4 +68,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(Discover);
+export default connect(mapStateToProps,null)(Discover);

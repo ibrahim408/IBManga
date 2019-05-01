@@ -8,7 +8,7 @@ export default(state = initialState, action) => {
   switch (action.type) {
     case C.GET_MATERIALS: return {
       ...state,
-      allMaterial: [...state.allMaterial, ...action.payload],
+      allMaterial: [...action.payload],
     }
     default:
       return state;

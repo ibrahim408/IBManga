@@ -1,9 +1,10 @@
-import { createStackNavigator, createBottomTabNavigator, createAppContainer } from 'react-navigation';
+import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 import Discover from '../components/Discover'
 import Anime from '../components/Anime'
 import Settings from '../components/Settings'
+import MangaDetail from '../components/MangaDetail'
 
-export const TabNavigator = createBottomTabNavigator({
+ const TabNavigator = createBottomTabNavigator({
    Discover: {
       screen: Discover,
    },
@@ -34,3 +35,59 @@ export const TabNavigator = createBottomTabNavigator({
     activeTintColor: 'white',
   }
 });
+
+ export const AppNavigator = createStackNavigator(
+  {
+    Discover: {
+      screen: TabNavigator,
+      navigationOptions: () => ({
+        title: `Discover`,
+        headerStyle: {
+          backgroundColor: '#132942'
+        },
+        headerTintColor: 'white',
+        headerLayoutPreset: 'left',
+        headerBackTitle: 'Discover',
+
+      }),
+    },
+    MangaDetail: {
+      screen: MangaDetail,
+      navigationOptions: () => ({
+        headerStyle: {
+          backgroundColor: '#132942'
+        },
+        headerTintColor: 'white',
+        headerBackTitle: 'Discover',
+
+      }),      
+    },
+    Anime:{
+      screen: Anime,
+      navigationOptions: () => ({
+        title: `Anime`,
+        headerStyle: {
+          backgroundColor: '#132942'
+        },
+        headerTintColor: 'white',
+        headerLayoutPreset: 'left',
+        headerBackTitle: 'Discover'
+      })
+    },
+    Settings:{
+      screen: Settings,
+      navigationOptions: () => ({
+        title: `Settings`,
+        headerStyle: {
+          backgroundColor: '#132942'
+        },
+        headerTintColor: 'white',
+        headerLayoutPreset: 'left',
+        headerBackTitle: 'Settings'
+      })
+    }
+  },
+  {
+    initialRouteName: "Discover"
+  }
+);

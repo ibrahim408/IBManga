@@ -1,81 +1,32 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Image} from 'react-native';
-import { createStackNavigator, createBottomTabNavigator, createAppContainer } from 'react-navigation';
-import Discover from './components/Discover'
-import MangaDetail from './components/MangaDetail'
-import Anime from './components/Anime'
-import Settings from './components/Settings'
-import {TabNavigator} from './config/navigation'
+import {} from 'react-native';
+import {createAppContainer } from 'react-navigation';
+import {AppNavigator} from './config/navigation'
+import { connect } from "react-redux";
+import {getMaterials, getCharacters} from './redux/actions/App'
+
+const mapDispatchToProps = {
+  getCharacters,
+  getMaterials,
+}
+
 class IBManga extends Component {
   
   constructor() {
     super();
   }
-  
+
+  componentDidMount(){
+  	this.props.getMaterials();
+  	this.props.getCharacters();
+  }
+
   render() {
     return (
-      <Discover />
+      <AppContainer />
     );
   }
 }
 
-const AppNavigator = createStackNavigator(
-  {
-    Discover: {
-      screen: TabNavigator,
-      navigationOptions: () => ({
-        title: `Discover`,
-        headerStyle: {
-          backgroundColor: '#132942'
-        },
-        headerTintColor: 'white',
-        headerLayoutPreset: 'left',
-        headerBackTitle: 'Discover',
-
-      }),
-    },
-    MangaDetail: {
-      screen: MangaDetail,
-      navigationOptions: () => ({
-        headerStyle: {
-          backgroundColor: '#132942'
-        },
-        headerTintColor: 'white',
-        headerBackTitle: 'Discover',
-
-      }),      
-    },
-    Anime:{
-      screen: Anime,
-      navigationOptions: () => ({
-        title: `Anime`,
-        headerStyle: {
-          backgroundColor: '#132942'
-        },
-        headerTintColor: 'white',
-        headerLayoutPreset: 'left',
-        headerBackTitle: 'Discover'
-      })
-    },
-    Settings:{
-      screen: Settings,
-      navigationOptions: () => ({
-        title: `Settings`,
-        headerStyle: {
-          backgroundColor: '#132942'
-        },
-        headerTintColor: 'white',
-        headerLayoutPreset: 'left',
-        headerBackTitle: 'Settings'
-      })
-    }
-  },
-  {
-    initialRouteName: "Discover"
-  }
-);
-
-
-
-export default createAppContainer(AppNavigator);
-
+const AppContainer = createAppContainer(AppNavigator);
+export default connect( null, mapDispatchToProps )(IBManga);
