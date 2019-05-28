@@ -41,7 +41,7 @@ import MangaDetail from '../components/MangaDetail'
     Discover: {
       screen: TabNavigator,
       navigationOptions: () => ({
-        title: `Discover`,
+        title: `IBManga`,
         headerStyle: {
           backgroundColor: '#132942'
         },

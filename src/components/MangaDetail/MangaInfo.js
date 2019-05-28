@@ -88,7 +88,7 @@ class MangaInfo extends React.Component{
 
 					<View style={styles.subContainer2}>
 						<View style={{flex: 1, justifyContent: 'center'}}>
-							<View style={{height: 40, margin: 5, borderRadius: 4, opacity: 0.5, backgroundColor: '#888888'}}>
+							<View style={{height: 40, margin: 5, borderRadius: 4, backgroundColor: 'rgba(192,192,192,0.3)'}}>
 								<Button
 									onPress={this.onShow}
 									title={saved}
@@ -97,7 +97,7 @@ class MangaInfo extends React.Component{
 							</View>		
 						</View>
 						<View style={{flex: 1, justifyContent: 'center'}}>
-							<View style={{height: 40, margin: 5, borderRadius: 4, opacity: 0.5, backgroundColor: '#888888'}}>
+							<View style={{height: 40, margin: 5, borderRadius: 4, backgroundColor: 'rgba(192,192,192,0.3)'}}>
 								<Button
 									onPress={this.addToList}
 									title="-/- CH"
@@ -112,7 +112,7 @@ class MangaInfo extends React.Component{
 							</View>						
 						</View>
 						<View style={{flex: 1, justifyContent: 'center'}}>
-							<View style={{ height: 40, margin: 5, borderRadius: 4, opacity: 0.5, backgroundColor: '#888888'}}>
+							<View style={{ height: 40, margin: 5, borderRadius: 4, opacity: 1, backgroundColor: 'rgba(192,192,192,0.3)'}}>
 								<Button
 									onPress={this.addToList}
 									title="NOT SCORED"
@@ -123,7 +123,7 @@ class MangaInfo extends React.Component{
 					</View>
 					
 					<View style={styles.subContainer3}>
-						<Text style={{color: 'white'}}>{this.props.item.description}
+						<Text style={{color: 'white',fontSize: 14}}>{this.props.item.description}
 						</Text>
 					</View>	
 

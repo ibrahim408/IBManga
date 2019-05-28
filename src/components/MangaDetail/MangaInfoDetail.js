@@ -29,7 +29,7 @@ export default class MangaInfoDetail extends React.Component{
                   <View style={{flex: 1, flexDirection: 'column'}}>
                     <Text style={{fontSize: 12, color: 'grey'}}> VOLUMES
                     </Text>
-                    <Text style={{fontSize: 12, color: 'white'}}> -
+                    <Text style={{fontSize: 12, color: 'white'}}> 92
                     </Text>                    
                   </View>                
                 </View>
@@ -37,7 +37,7 @@ export default class MangaInfoDetail extends React.Component{
                   <View style={{flex: 1, flexDirection: 'column'}}>
                     <Text style={{fontSize: 12, color: 'grey'}}> CHAPTERS
                     </Text>
-                    <Text style={{fontSize: 12, color: 'white'}}> -
+                    <Text style={{fontSize: 12, color: 'white'}}> 876
                     </Text>                    
                   </View>                
                 </View>                                
@@ -47,7 +47,7 @@ export default class MangaInfoDetail extends React.Component{
                   <View style={{flex: 1, flexDirection: 'column'}}>
                     <Text style={{fontSize: 12, color: 'grey'}}> AUTHOR
                     </Text> 
-                    <Text style={{fontSize: 12, color: 'white'}}> -
+                    <Text style={{fontSize: 12, color: 'white'}}> Eiichiro Oda
                     </Text>
                   </View>
                 </View>

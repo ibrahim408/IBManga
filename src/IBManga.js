@@ -4,6 +4,8 @@ import {createAppContainer } from 'react-navigation';
 import {AppNavigator} from './config/navigation'
 import { connect } from "react-redux";
 import {getMaterials, getCharacters} from './redux/actions/App'
+import Configer from 'react-native-config'
+
 
 const mapDispatchToProps = {
   getCharacters,
@@ -21,7 +23,7 @@ class IBManga extends Component {
   	this.props.getCharacters();
   }
 
-  render() {
+  render() {    
     return (
       <AppContainer />
     );
